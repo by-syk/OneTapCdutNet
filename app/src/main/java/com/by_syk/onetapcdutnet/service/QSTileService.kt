@@ -48,10 +48,7 @@ class QSTileService : TileService() {
     override fun onClick() {
         super.onClick()
 
-        // 仅在图块未被置为不可用状态（已连接 WiFi）才响应点击动作
-        if (qsTile.state != Tile.STATE_INACTIVE) {
-            Task().execute()
-        }
+        Task().execute()
     }
 
     /**
@@ -67,7 +64,7 @@ class QSTileService : TileService() {
         if (enable) {
             qsTile.state = Tile.STATE_ACTIVE
         } else {
-            qsTile.state = Tile.STATE_INACTIVE
+            qsTile.state = Tile.STATE_UNAVAILABLE
         }
         qsTile.updateTile()
     }
