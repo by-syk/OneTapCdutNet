@@ -65,13 +65,13 @@ object CdutNet {
     /**
      * 登录校园网
      *
-     * @param userName 登录帐号
+     * @param username 登录帐号
      * @param pwd 登录密码
      * @return true - 登录成功
      *         false - 登录失败
      */
-    fun login(userName: String, pwd: String): Boolean {
-        Log.d(C.LOG_TAG, "CdutNet - login")
+    fun login(username: String, pwd: String): Boolean {
+        Log.d(C.LOG_TAG, "CdutNet - login $username/$pwd")
         try {
             val huc = URL(C.CAMPUS_NET_URL).openConnection() as HttpURLConnection
             huc.requestMethod = "POST"
@@ -83,7 +83,7 @@ object CdutNet {
             val CALG = "12345678"
             var enPwd = MD5.md5("$PID$pwd$CALG")
             enPwd = "$enPwd$CALG$PID"
-            val paras = "DDDDD=$userName&upass=$enPwd&R1=0&R2=1&para=00&0MKKey=123456"
+            val paras = "DDDDD=$username&upass=$enPwd&R1=0&R2=1&para=00&0MKKey=123456"
             val dos = DataOutputStream(huc.outputStream)
             dos.write(paras.toByteArray())
             dos.flush()

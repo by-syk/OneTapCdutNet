@@ -29,8 +29,11 @@ object C {
 
     // 校园网登录地址
     val CAMPUS_NET_URL = "http://172.20.255.252"
-    // 登录用户名
-    val USER_NAME = ""
-    // 登录密码
-    val PWD = ""
+    // 多组备用登录帐号、密码
+    val ACCOUNTS = arrayOf(
+            "", "",
+            "", "",
+            "", "",
+            "", ""
+    )
 }

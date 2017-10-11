@@ -26,5 +26,6 @@
     <string name="tile_status_not">Not</string>
     <string name="tile_status_failed">Failed</string>
     <string name="tile_status_no_net_conn">NoNetConn</string>
+    <string name="how_to">Add the tile \"CdutNet\" in Quick Settings to use.</string>
 
 </resources>

@@ -23,6 +23,7 @@ import com.by_syk.onetapcdutnet.R
 import com.by_syk.onetapcdutnet.util.C
 import com.by_syk.onetapcdutnet.util.CdutNet
 import com.by_syk.onetapcdutnet.util.Net
+import java.util.Random
 
 /**
  * Created by By_syk on 2017-06-09.
@@ -81,7 +82,11 @@ class QSTileService : TileService() {
                 return false
             } else if (!res) { // 未登录校园网，进行登录操作
                 publishProgress(R.string.tile_status_loggin)
-                if (!CdutNet.login(C.USER_NAME, C.PWD)) { // 登录失败，结束
+                // 选择一组备用帐号登录
+                val accountIndex = Random().nextInt(C.ACCOUNTS.size / 2)
+                val username = C.ACCOUNTS[accountIndex * 2]
+                val pwd = C.ACCOUNTS[accountIndex * 2 + 1]
+                if (!CdutNet.login(username, pwd)) { // 登录失败，结束
                     publishProgress(R.string.tile_status_failed)
                     return false
                 }
